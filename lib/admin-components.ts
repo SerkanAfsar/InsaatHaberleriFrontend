@@ -2,8 +2,10 @@
 
 import addUpdateCategory from "@/app/(Admin)/Admin/Categories/_components/add-update-category";
 import AddUpdateMemberDetail from "@/app/(Admin)/Admin/Users/_components/member-detail-component";
+import AddUpdateCategoryNewsUrl from "@/app/(Admin)/Admin/CategorySources/_components/categorysource-detail-component";
 
 export const AdminComponents = {
   Categories: addUpdateCategory,
   Members: AddUpdateMemberDetail,
+  CategoryNewsUrl: AddUpdateCategoryNewsUrl,
 };

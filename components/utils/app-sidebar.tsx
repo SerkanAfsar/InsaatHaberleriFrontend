@@ -41,7 +41,9 @@ export function AppSidebar({
       </SidebarHeader>
       <SidebarContent className="pt-3">
         {/* <NavMain items={data.navMain} /> */}
-        <NavProjects menuitems={layoutData} />
+        <React.Suspense>
+          <NavProjects menuitems={layoutData} />
+        </React.Suspense>
       </SidebarContent>
       {/* <SidebarFooter className="border-sidebar-border border-t p-3 group-data-[collapsible=icon]:p-2">
         <NavUser user={data.user} />

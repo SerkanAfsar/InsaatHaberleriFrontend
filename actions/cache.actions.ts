@@ -11,10 +11,6 @@ export async function revalidateKeys(keys: string[]) {
   }
 }
 
-export async function updateNewsCacheAction() {
-  revalidateTag(CACHE_TAGS.ARTICLES.ARTICLE_LIST, "default");
-}
-
 export async function getCategoryList() {
   const result = await BaseFetch<CategoryType, any>({
     method: "GET",

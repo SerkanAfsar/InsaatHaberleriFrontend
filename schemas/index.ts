@@ -1,3 +1,4 @@
+import { NewsSites } from "@/types";
 import { z } from "zod";
 
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
@@ -15,18 +16,15 @@ export const addCategorySchema = z.object({
     .min(1, { error: "SEO açıklamasını giriniz" }),
 });
 
-export const addCityShema = z.object({
-  cityName: z
-    .string({ error: "Şehir Adı Giriniz" })
-    .min(1, { error: "Şehir Adı Giriniz" }),
-  picture: z
-    .instanceof(File, { message: "Resim yükleyiniz" })
-    .refine((file) => file.size <= MAX_FILE_SIZE, "Max 5MB olmalı")
-    .refine(
-      (file) => ACCEPTED_IMAGE_TYPES.includes(file.type),
-      "Sadece .jpg, .png, .webp kabul edilir",
-    )
-    .optional(),
+export const addCategorySourceSchema = z.object({
+  url: z
+    .string({ error: "Web sitesi URL'si giriniz" })
+    .min(1, { error: "Web sitesi URL'si giriniz" })
+    .url({ error: "Geçerli bir web sitesi URL'si giriniz" }),
+  categoryId: z
+    .number({ error: "Kategori seçiniz" })
+    .positive({ error: "Kategori ID sıfırdan büyük olmalıdır" }),
+  newsSite: z.enum(NewsSites, { error: "Geçerli bir haber sitesi seçiniz" }),
 });
 
 export const loginShema = z.object({
@@ -40,7 +38,7 @@ export const addBlogSchema = z.object({
   title: z
     .string({ error: "Başlık Giriniz" })
     .min(1, { error: "Başlık Giriniz" }),
-  subTitle: z
+  subDescription: z
     .string({ error: "Alt Açıklama Giriniz" })
     .min(1, { error: "Alt Açıklama Giriniz" }),
   seoTitle: z
@@ -50,10 +48,14 @@ export const addBlogSchema = z.object({
     .string({ error: "seoDescription Giriniz" })
     .min(1, { error: "seoDescription Giriniz" }),
 
+  categoryId: z
+    .number({ error: "Kategori seçiniz" })
+    .positive({ error: "Kategori ID sıfırdan büyük olmalıdır" }),
+
   content: z
     .string({ error: "content Giriniz" })
     .min(1, { error: "content Giriniz" }),
-  image: z
+  ImageFile: z
     .instanceof(File, { message: "Resim yükleyiniz" })
     .refine((file) => file.size <= MAX_FILE_SIZE, "Max 5MB olmalı")
     .refine(
@@ -87,7 +89,7 @@ export const addMemberDetailSchema = (isAdd: boolean) =>
             .array(z.string())
             .min(1, { error: "En Az 1 Rol Seçiniz" })
             .optional(),
-      isAdd: z.boolean(),
+      // isAdd: z.boolean(),
     })
     .superRefine((data, ctx) => {
       const { email, password } = data;

@@ -14,11 +14,7 @@ export default function CategoryListContainer({
 }: {
   dataItem: AdminMenuPageType;
 }) {
-  const columns = useMemo<
-    ColumnDef<
-      AddCategoryType & { id: number } & { parentCategory: AddCategoryType }
-    >[]
-  >(
+  const columns = useMemo<ColumnDef<AddCategoryType & { id: number }>[]>(
     () => [
       {
         id: "select",

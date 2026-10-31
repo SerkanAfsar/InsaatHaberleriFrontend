@@ -29,13 +29,12 @@ import { Controller, useForm } from "react-hook-form";
 
 const AddUpdateMemberDetail = React.forwardRef<
   AddFormRef,
-  AddUpdateContainerProps
+  AddUpdateContainerProps<AddAppUserType>
 >(({ type, idNumber, setOpened, defaultValues, ...rest }, ref) => {
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const initialValues: AddAppUserType = {
     email: "",
-    isAdd: type == "ADD",
     name: "",
     password: "",
     roles: [],
@@ -46,8 +45,6 @@ const AddUpdateMemberDetail = React.forwardRef<
     resolver: zodResolver(addMemberDetailSchema(type == "ADD")),
     defaultValues: defaultValues ?? initialValues,
   });
-
-  // const values = form.getValues("roles");
 
   const apiUrl = `${MainAdminMenuData.Users.apiUrl}${idNumber ? `/${idNumber}` : ""}`;
 
@@ -61,7 +58,7 @@ const AddUpdateMemberDetail = React.forwardRef<
     data: rolesData,
     error: rolesError,
     isPending: rolesPending,
-  } = useGetAllData<AddRoleType & { id: string }>(
+  } = useGetAllData<AddRoleType & { roleId: string }>(
     MainAdminMenuData.Roles.apiUrl,
     MainAdminMenuData.Roles.validateKey,
   );
@@ -69,7 +66,7 @@ const AddUpdateMemberDetail = React.forwardRef<
   const roleItems =
     rolesData?.data?.map((item) => ({
       label: item.roleName as string,
-      value: item.id,
+      value: item.roleId,
     })) || [];
 
   useEffect(() => {
@@ -212,7 +209,7 @@ const AddUpdateMemberDetail = React.forwardRef<
         />
       </FieldGroup>
 
-      <AdminModalSubmit />
+      <AdminModalSubmit loading={form.formState.isSubmitting} />
     </form>
   );
 });

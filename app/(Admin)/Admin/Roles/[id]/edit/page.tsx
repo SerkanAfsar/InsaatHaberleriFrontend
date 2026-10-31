@@ -1,12 +1,10 @@
-import { Suspense } from "react";
+import { notFound } from "next/navigation";
 import RoleDetailWrapper from "../../_containers/role-detail-wrapper";
 
-export default function Page({ params }: PageProps<"/Admin/Roles/[id]/edit">) {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      {params.then((props) => {
-        return <RoleDetailWrapper id={props.id} />;
-      })}
-    </Suspense>
-  );
+export default async function Page({
+  params,
+}: PageProps<"/Admin/Roles/[id]/edit">) {
+  const { id } = await params;
+  if (!id) return notFound();
+  return <RoleDetailWrapper id={id} />;
 }

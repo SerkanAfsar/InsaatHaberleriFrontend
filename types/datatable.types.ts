@@ -30,11 +30,11 @@ export type DatatableRowActionProps<TData extends object> = {
   deleteCacheKeys?: string[];
 };
 
-export type AddUpdateContainerProps = {
+export type AddUpdateContainerProps<T extends object> = {
   type: "ADD" | "UPDATE";
   idNumber?: number | string;
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
-  defaultValues?: any;
+  defaultValues?: T;
 } & React.HtmlHTMLAttributes<HTMLFormElement>;
 
 export type AddFormRef = {
@@ -42,9 +42,10 @@ export type AddFormRef = {
   reset: () => void;
 };
 
-export type AddUpdateComponentType = React.ForwardRefExoticComponent<
-  AddUpdateContainerProps & React.RefAttributes<AddFormRef>
->;
+export type AddUpdateComponentType<T extends object> =
+  React.ForwardRefExoticComponent<
+    AddUpdateContainerProps<T> & React.RefAttributes<AddFormRef>
+  >;
 
 export type AddUpdateComponentProps = {
   id?: number | string;

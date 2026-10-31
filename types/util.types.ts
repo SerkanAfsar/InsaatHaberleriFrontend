@@ -100,3 +100,9 @@ export type AdminMenuDataType = Record<string, AdminMenuPageType>;
 export type BaseComponentType = {
   className?: string;
 };
+
+export type DetailContainerProps<T> = {
+  type: "ADD" | "UPDATE";
+  defaultValues?: T;
+  id?: string;
+};

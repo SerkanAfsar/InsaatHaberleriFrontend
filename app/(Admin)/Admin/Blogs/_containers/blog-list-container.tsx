@@ -8,6 +8,7 @@ import { formatLocaleDate } from "@/lib/utils";
 import type { ColumnDef } from "@tanstack/react-table";
 import { useMemo } from "react";
 import Image from "next/image";
+import DatatableRowActions from "@/components/datatables/datatable-row-actions";
 
 export default function BlogListContainer() {
   const columns = useMemo<ColumnDef<BlogType>[]>(
@@ -87,6 +88,28 @@ export default function BlogListContainer() {
         cell: ({ row }) => formatLocaleDate(row.original.createdAt),
         enableSorting: true,
         meta: { title: "Eklenme Tarihi" },
+      },
+      {
+        id: "actions",
+        header: () => {
+          return <span>İşlemler</span>;
+        },
+        cell: ({ row, table }) => {
+          return (
+            <DatatableRowActions
+              row={row}
+              table={table}
+              dataItem={MainAdminMenuData.Blogs}
+            />
+          );
+        },
+        enableSorting: false,
+        enableHiding: false,
+        size: 50,
+        meta: {
+          updateTitle: "Kategori Güncelleme",
+          updateDescription: "Kategori Güncelleme İşlemleri",
+        },
       },
     ],
     [],

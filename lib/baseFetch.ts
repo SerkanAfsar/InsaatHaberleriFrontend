@@ -56,6 +56,7 @@ export async function BaseFetch<EntityType, DataType>({
   try {
     const response = await fetch(newUrl, request({ tokenString: accessToken }));
     const result = await getContent<EntityType>(response);
+
     if (!result) {
       throw new Error("Backend Not Working");
     }
@@ -65,7 +66,6 @@ export async function BaseFetch<EntityType, DataType>({
       statusCode: result.statusCode || response.status,
     } as ResponseResult<EntityType>;
   } catch (error: any) {
-    console.log(error);
     return {
       success: false,
       entities: null,

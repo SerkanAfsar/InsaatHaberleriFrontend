@@ -1,7 +1,7 @@
 import {
   addBlogSchema,
   addCategorySchema,
-  addCityShema,
+  addCategorySourceSchema,
   addMemberDetailSchema,
   addRoleSchema,
   changePasswordSchema,
@@ -15,7 +15,7 @@ import { z } from "zod";
 
 export type AddCategoryType = z.infer<typeof addCategorySchema>;
 
-export type AddCityType = z.infer<typeof addCityShema>;
+export type AddCategorySourceType = z.infer<typeof addCategorySourceSchema>;
 
 export type LoginType = z.infer<typeof loginShema>;
 

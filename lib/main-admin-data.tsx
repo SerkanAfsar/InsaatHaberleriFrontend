@@ -9,6 +9,14 @@ export const MainAdminMenuData = {
     component: "Categories",
     icon: "LayoutGrid",
   },
+  CategorySources: {
+    url: "/Admin/CategorySources",
+    validateKey: "CategorySources",
+    title: "Kategori Url",
+    apiUrl: "/CategoryNewsUrls",
+    component: "CategoryNewsUrl",
+    icon: "LayoutGrid",
+  },
 
   Blogs: {
     url: "/Admin/Blogs",

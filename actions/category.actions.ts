@@ -10,9 +10,12 @@ export async function getAllCategories() {
   const result = await BaseFetch<CategoryType, any>({
     method: "GET",
     requireToken: false,
-
     url: `${API_URL.CATEGORIES.AllData}`,
   });
+  if (!result.success && result.errors) {
+    throw new Error(result.errors["error"] ?? "Denemee Error");
+  }
+
   return result;
 }
 

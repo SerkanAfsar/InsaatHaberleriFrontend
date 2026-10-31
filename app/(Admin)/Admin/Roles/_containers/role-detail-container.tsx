@@ -2,11 +2,9 @@
 
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { useEffect } from "react";
-
 import { useCrudData } from "@/hooks/use-queries";
-import { AddRoleType } from "@/types";
+import { AddRoleType, DetailContainerProps } from "@/types";
 import { addRoleSchema } from "@/schemas";
 import { ROLE_CLAIM_LIST } from "@/lib/data";
 import {
@@ -20,17 +18,11 @@ import { Button } from "@/components/ui/button";
 import RoleModuleItem from "../_components/role-detail-item";
 import { MainAdminMenuData } from "@/lib";
 
-type RoleDetailContainerProps = {
-  type: "ADD" | "UPDATE";
-  defaultValues?: AddRoleType;
-  id?: string;
-};
-
 export default function RoleDetailContainer({
   type,
   defaultValues,
   id,
-}: RoleDetailContainerProps) {
+}: DetailContainerProps<AddRoleType>) {
   const form = useForm<AddRoleType>({
     resolver: zodResolver(addRoleSchema),
     defaultValues: defaultValues ?? {

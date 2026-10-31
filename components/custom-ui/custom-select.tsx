@@ -11,6 +11,7 @@ type CustomSelectProps = React.ComponentPropsWithoutRef<typeof Select> & {};
 const CustomSelect = React.forwardRef<CustomSelectRef, CustomSelectProps>(
   (props, ref) => {
     const innerRef = useRef<React.ComponentRef<typeof Select>>(null);
+    const { value, ...selectProps } = props;
 
     useImperativeHandle(ref, () => ({
       deneme: () => {
@@ -24,7 +25,8 @@ const CustomSelect = React.forwardRef<CustomSelectRef, CustomSelectProps>(
           className="w-full"
           noOptionsMessage={() => "Sonuç Bulunamadı..."}
           ref={innerRef}
-          {...props}
+          {...selectProps}
+          value={value ?? undefined}
         />
       </div>
     );

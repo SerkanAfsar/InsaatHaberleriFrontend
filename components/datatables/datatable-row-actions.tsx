@@ -10,7 +10,9 @@ export default function DatatableRowActions<TData extends object>({
   ...rest
 }: DatatableRowActionProps<TData>) {
   const rowOriginal = row.original as any;
-  const newId = rowOriginal.id ?? rowOriginal.appUserId ?? rowOriginal.roleId;
+
+  const newId = rowOriginal.id ?? rowOriginal.userId ?? rowOriginal.roleId;
+
   return (
     <div className="flex items-center justify-start gap-4">
       <DatatableUpdateComponent id={newId} dataItem={dataItem} {...rest} />

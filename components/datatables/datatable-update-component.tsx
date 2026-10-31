@@ -11,11 +11,11 @@ import {
 } from "../ui/sheet";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { Pencil } from "lucide-react";
-import { useRouter } from "nextjs-toploader/app";
 import { AddFormRef, AddUpdateComponentProps } from "@/types";
 import { useSingleItemById } from "@/hooks/use-queries";
 import { AdminComponents } from "@/lib/admin-components";
 import Link from "next/link";
+import DatatableUpdateLoader from "./datatable-update-loader";
 function DatatableUpdateComponent({
   id,
   dataItem,
@@ -30,11 +30,9 @@ function DatatableUpdateComponent({
       ? (`${dataItem.url}/${id}/edit` as string)
       : AdminComponents[dataItem.component as keyof typeof AdminComponents];
 
-  const router = useRouter();
-
   const apiUrl = `${dataItem.apiUrl}/${id}`;
 
-  const { data } = useSingleItemById(
+  const { data, error, isLoading } = useSingleItemById(
     id!,
     apiUrl,
     dataItem.validateKey,
@@ -70,10 +68,14 @@ function DatatableUpdateComponent({
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Deneme Başlık</SheetTitle>
-          <SheetDescription>Deneme Alt Başlık</SheetDescription>
+          <SheetTitle>{dataItem.title}</SheetTitle>
+          <SheetDescription>
+            {dataItem.title} Güncelle İşlemleri
+          </SheetDescription>
         </SheetHeader>
         <div className="flex-auto gap-6 overflow-auto px-4">
+          {isLoading && <DatatableUpdateLoader />}
+          {error && <div>{error.message}</div>}
           {!!data && (
             <Component
               ref={ref}

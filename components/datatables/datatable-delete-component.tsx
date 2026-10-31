@@ -25,11 +25,11 @@ export default function DataTableDeleteComponent<TData extends object>({
   deleteCacheKeys,
 }: DeleteComponentProps<TData>) {
   const [isOpened, setIsOpened] = useState<boolean>(false);
-  const { id, appUserId, roleId } = row.original as any;
+  const { id, userId, roleId } = row.original as any;
 
   const { customValidateKey } = (table?.options.meta as any) || {};
 
-  const apiUrl = `${dataItem.deleteUrl ?? dataItem.apiUrl}/${id ?? appUserId ?? roleId}`;
+  const apiUrl = `${dataItem.deleteUrl ?? dataItem.apiUrl}/${id ?? userId ?? roleId}`;
 
   const { mutateAsync, isPending } = useCrudData<TData, object>(
     apiUrl,
