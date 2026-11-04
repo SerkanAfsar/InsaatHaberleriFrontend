@@ -5,7 +5,7 @@ import HeaderBottomRight from "./header-botttom-right";
 import HeaderAside from "./header-aside";
 
 export default async function HeaderBottom() {
-  const { entities } = await getAllCategories();
+  const entities = await getAllCategories();
 
   return (
     <CustomElement as="section" className="bg-clientdark text-lg text-white">

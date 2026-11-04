@@ -8,15 +8,11 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { CACHE_TAGS, MainAdminMenuData } from "@/lib";
+import { CACHE_TAGS, getArrayData, MainAdminMenuData } from "@/lib";
 import { setErrors } from "@/lib/utils";
 import { useCrudData, useGetAllData } from "@/hooks/use-queries";
 import { addBlogSchema } from "@/schemas";
-import type {
-  AddNewsType,
-  CustomComboboxItemProps,
-  DetailContainerProps,
-} from "@/types";
+import type { AddNewsType, DetailContainerProps } from "@/types";
 import { CategoryType, type BlogType } from "@/types/entity.types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import dynamic from "next/dynamic";
@@ -56,11 +52,11 @@ export default function AddBlogForm({
     MainAdminMenuData.Categories.validateKey,
   );
 
-  const categoryList: CustomComboboxItemProps[] =
-    categoryData?.data?.map((item) => ({
-      id: item.id,
-      value: item.categoryName,
-    })) ?? [];
+  const categoryList = getArrayData(
+    categoryData?.data ?? [],
+    "id",
+    "categoryName",
+  );
 
   const apiUrl = `${MainAdminMenuData.Blogs.apiUrl}${id ? `/${id}` : ""}`;
 
@@ -71,7 +67,7 @@ export default function AddBlogForm({
     apiUrl,
     type == "ADD" ? "POST" : "PUT",
     MainAdminMenuData.Blogs.validateKey,
-    [CACHE_TAGS.ARTICLES.ARTICLE_LIST],
+    [CACHE_TAGS.ARTICLES.ARTICLE_LIST, CACHE_TAGS.CATEGORIES.ALL_CATEGORIES],
     "formdata",
   );
 
@@ -209,7 +205,7 @@ export default function AddBlogForm({
         />
       </FieldGroup>
       {form.formState.errors.root?.message && (
-        <p role="alert" className="text-sm text-destructive">
+        <p role="alert" className="text-destructive text-sm">
           {form.formState.errors.root.message}
         </p>
       )}

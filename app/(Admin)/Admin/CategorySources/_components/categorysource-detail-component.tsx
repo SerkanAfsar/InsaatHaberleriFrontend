@@ -1,5 +1,5 @@
 "use client";
-import AdminModalSubmit from "@/components/utils/admin-modal-submit";
+import AdminModalSubmit from "@/components/datatables/datatable-modal-submit";
 import {
   Field,
   FieldError,
@@ -8,14 +8,15 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useCrudData, useGetAllData } from "@/hooks/use-queries";
-import { MainAdminMenuData } from "@/lib";
+import { getArrayData, MainAdminMenuData } from "@/lib";
 import { setErrors } from "@/lib/utils";
-import { addCategorySourceSchema, NewsSites } from "@/schemas";
+import { addCategorySourceSchema } from "@/schemas";
 import {
   AddCategorySourceType,
   AddFormRef,
   AddUpdateContainerProps,
   CustomComboboxItemProps,
+  NewsSites,
 } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { memo, useEffect, useImperativeHandle, useRef } from "react";
@@ -52,11 +53,11 @@ const AddUpdateCategorySourceDetail = React.forwardRef<
     MainAdminMenuData.Categories.validateKey,
   );
 
-  const categorydata: CustomComboboxItemProps[] =
-    categoryList?.data?.map((item) => ({
-      id: item.id,
-      value: item.categoryName,
-    })) || [];
+  const categoryData = getArrayData(
+    categoryList?.data ?? [],
+    "id",
+    "categoryName",
+  );
 
   const newsSiteOptions: CustomComboboxItemProps[] = Object.entries(NewsSites)
     .filter(([key]) => Number.isNaN(Number(key)))
@@ -107,7 +108,7 @@ const AddUpdateCategorySourceDetail = React.forwardRef<
               <FieldLabel htmlFor="categoryName">Kategori Adı</FieldLabel>
 
               <CustomCombobox
-                items={categorydata}
+                items={categoryData}
                 placeHolder="Kategori Seçiniz.."
                 value={field.value}
                 onChange={(value?: number) => {

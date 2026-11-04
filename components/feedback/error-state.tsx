@@ -12,7 +12,7 @@ const ErrorState = ({
   return (
     <div
       role="alert"
-      className="rounded-card bg-error-50 p-section text-center"
+      className="rounded-card bg-error-50 p-section col-span-full w-full text-center"
     >
       <p className={`text-error-700`}>{title}</p>
       {message && <p className={`text-grey-500 mt-2`}>{message}</p>}

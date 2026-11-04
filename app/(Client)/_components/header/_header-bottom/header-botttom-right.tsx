@@ -52,7 +52,7 @@ function HeaderBottomCategoryList({
   return (
     <CustomElement
       className={cn(
-        "invisible absolute top-full right-0 left-0 z-10 flex w-full gap-12 bg-white p-8 text-black opacity-0 shadow",
+        "invisible absolute top-full right-0 left-0 z-30 flex w-full gap-12 bg-white p-8 text-black opacity-0 shadow",
         opened && "animate-menu-fade-in visible opacity-100",
       )}
     >

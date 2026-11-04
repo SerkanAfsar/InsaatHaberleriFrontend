@@ -1,5 +1,5 @@
 "use client";
-import AdminModalSubmit from "@/components/utils/admin-modal-submit";
+import AdminModalSubmit from "@/components/datatables/datatable-modal-submit";
 import CustomSelect from "@/components/custom-ui/custom-select";
 import {
   Field,

@@ -1,7 +1,11 @@
 import { Button } from "../ui/button";
 import { SheetClose, SheetFooter } from "../ui/sheet";
 
-export default function AdminModalSubmit({ loading }: { loading: boolean }) {
+export default function DatatableModalSubmit({
+  loading,
+}: {
+  loading: boolean;
+}) {
   return (
     <SheetFooter className="mt-auto px-0">
       <Button

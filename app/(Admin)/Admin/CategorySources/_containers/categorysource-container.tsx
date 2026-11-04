@@ -3,13 +3,13 @@
 import DataTableColumnHeader from "@/components/datatables/datatable-column-header";
 import DatatableRowActions from "@/components/datatables/datatable-row-actions";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AddCategorySourceType } from "@/types";
+import { AddCategorySourceType, NewsSites } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { useMemo } from "react";
 
 import { CustomDataTable } from "@/components/datatables";
 import { CategoryType } from "@/types/entity.types";
-import { NewsSites } from "@/schemas";
+
 import { MainAdminMenuData } from "@/lib";
 
 export default function CategorySourceListContainer() {

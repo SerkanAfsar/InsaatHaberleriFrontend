@@ -1,4 +1,4 @@
-import { API_URL, BaseFetch, CACHE_TAGS } from "@/lib";
+import { API_URL, BaseFetch, CACHE_TAGS, getErrResult } from "@/lib";
 import { CategoryType } from "@/types/entity.types";
 import { cacheLife, cacheTag } from "next/cache";
 
@@ -7,16 +7,17 @@ export async function getAllCategories() {
   cacheLife("weeks");
   cacheTag(CACHE_TAGS.CATEGORIES.ALL_CATEGORIES);
 
-  const result = await BaseFetch<CategoryType, any>({
+  const { entities, success, errors } = await BaseFetch<CategoryType, any>({
     method: "GET",
     requireToken: false,
     url: `${API_URL.CATEGORIES.AllData}`,
   });
-  if (!result.success && result.errors) {
-    throw new Error(result.errors["error"] ?? "Denemee Error");
+  if (!success && errors) {
+    const errResult = getErrResult(errors);
+    throw new Error(errResult);
   }
 
-  return result;
+  return entities;
 }
 
 export async function getCategoryDetail({ id }: { id: number }) {
@@ -25,10 +26,50 @@ export async function getCategoryDetail({ id }: { id: number }) {
   cacheTag(CACHE_TAGS.CATEGORIES.ALL_CATEGORIES);
   cacheTag(`${CACHE_TAGS.CATEGORIES.ALL_CATEGORIES}:${id}`);
 
-  const result = await BaseFetch<CategoryType, any>({
+  const { entity, errors, success } = await BaseFetch<CategoryType, any>({
     method: "GET",
     requireToken: false,
     url: API_URL.CATEGORIES.Detail(id),
   });
-  return result;
+
+  if (!success && errors) {
+    const errResult = getErrResult(errors);
+    throw new Error(errResult);
+  }
+  return entity;
+}
+
+export async function getMostReadedCategories() {
+  "use cache";
+  cacheLife("weeks");
+  cacheTag(CACHE_TAGS.CATEGORIES.MOST_READED);
+
+  const { entities, success, errors } = await BaseFetch<CategoryType, any>({
+    method: "GET",
+    requireToken: false,
+    url: `${API_URL.CATEGORIES.MostReaded}`,
+  });
+  if (!success && errors) {
+    const errResult = getErrResult(errors);
+    throw new Error(errResult);
+  }
+
+  return entities;
+}
+
+export async function getRandomCategoriesWithNews() {
+  "use cache";
+  cacheLife("days");
+
+  const { entities, success, errors } = await BaseFetch<CategoryType, any>({
+    method: "GET",
+    requireToken: false,
+    url: `${API_URL.CATEGORIES.RandomCategories}`,
+  });
+  if (!success && errors) {
+    const errResult = getErrResult(errors);
+    throw new Error(errResult);
+  }
+
+  return entities;
 }

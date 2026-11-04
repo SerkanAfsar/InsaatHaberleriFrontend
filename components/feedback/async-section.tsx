@@ -1,21 +1,32 @@
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { SectionErrorBoundary } from ".";
 import CustomElement from "../utils/custom-element";
+import { cn } from "@/lib";
 
-interface Props {
+interface Props<T extends React.ElementType> {
   title: string;
   fallback: React.ReactNode;
   children: React.ReactNode;
+  className?: string;
+  as?: T;
 }
 
-const AsyncSection = ({ title, fallback, children }: Props) => {
+export default function AsyncSection<T extends React.ElementType>({
+  children,
+  fallback,
+  title,
+  as,
+  className,
+}: Props<T>) {
   return (
-    <CustomElement aria-label={title}>
+    <CustomElement
+      as={as || "div"}
+      aria-label={title}
+      className={cn(className && className)}
+    >
       <SectionErrorBoundary title={title}>
         <Suspense fallback={fallback}>{children}</Suspense>
       </SectionErrorBoundary>
     </CustomElement>
   );
-};
-
-export default AsyncSection;
+}

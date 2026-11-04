@@ -22,7 +22,7 @@ export default function HeaderAside({
       <CustomElement
         as="aside"
         className={cn(
-          "fixed inset-0 h-full w-full",
+          "fixed inset-0 z-20 h-full w-full",
           "transition-all delay-500 duration-500 ease-in",
           opened ? "visible" : "invisible",
         )}

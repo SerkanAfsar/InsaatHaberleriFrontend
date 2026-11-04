@@ -15,10 +15,15 @@ export const API_URL = {
   ARTICLES: {
     Paginated: "/Articles/Paginated",
     All: "/Articles",
+    GetLast: "/Articles/LastNews",
+    Popular: "/Articles/Popular",
+    MostPopular: "/Articles/MostPopular",
   },
 
   CATEGORIES: {
     AllData: "/Categories",
+    MostReaded: "/Categories/MostReaded",
+    RandomCategories: "/Categories/RandomCategories",
     Detail: (id: number) => `/Categories/${id}`,
     TopCategories: (id: number | null) =>
       `/Categories/GetCategoryListByTopCategory?topCategoryId=${id}`,

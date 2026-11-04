@@ -101,7 +101,7 @@ export function getJwtValue(token: string, value: keyof AppJwtPayload) {
 }
 
 export function getArrayData<T extends object>(
-  data: T[],
+  data: T[] | null,
   idKey: keyof T,
   valueKey: keyof T,
 ): CustomComboboxItemProps[] {
