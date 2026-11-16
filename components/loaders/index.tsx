@@ -8,6 +8,27 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import { cn } from "@/lib";
+
+export const DetailTopSectionLoader = () => {
+  return (
+    <section
+      role="status"
+      aria-label="Haber başlığı yükleniyor"
+      className="flex w-full flex-col items-center justify-center gap-3 bg-gray-100 p-6"
+    >
+      <span className="sr-only">Haber başlığı yükleniyor</span>
+      <Skeleton className="h-9 w-3/4 max-w-2xl rounded-md bg-gray-300 sm:h-10" />
+      <nav aria-hidden="true" className="flex max-w-full items-center gap-2">
+        <Skeleton className="h-4 w-16 shrink-0 bg-gray-300" />
+        <span className="text-gray-400">/</span>
+        <Skeleton className="h-4 w-24 shrink-0 bg-gray-300" />
+        <span className="text-gray-400">/</span>
+        <Skeleton className="h-4 w-32 max-w-[30vw] bg-gray-300" />
+      </nav>
+    </section>
+  );
+};
 
 export const MainNewsItemLoader = () => {
   return (
@@ -29,28 +50,85 @@ export const MainNewsItemLoader = () => {
   );
 };
 
-export const BigNewsItemLoader = () => {
+export const BigNewsItemLoader = ({
+  compType = "normal",
+}: {
+  compType?: "normal" | "other";
+}) => {
   return (
     <article
       role="status"
       aria-label="Haber yükleniyor"
-      className="flex w-full flex-col items-start justify-start gap-4 text-sm md:flex-row"
+      className={cn(
+        "flex w-full flex-col items-start justify-start gap-4 text-sm",
+        compType === "other" && "bg-gray-100 p-4",
+        compType === "other" ? "flex-col" : "md:flex-row",
+      )}
     >
       <span className="sr-only">Haber yükleniyor</span>
-      <Skeleton className="aspect-[355/280] h-full w-full flex-1 shrink-0 grow-0 rounded-none bg-gray-300 md:w-auto" />
+      <Skeleton
+        className={cn(
+          "max-h-[200px] w-full flex-1 shrink-0 grow-0 rounded-none",
+          compType === "other"
+            ? "h-[200px] bg-gray-400 md:w-full"
+            : "aspect-[355/280] h-full bg-gray-300 md:w-auto",
+        )}
+      />
 
-      <div className="flex w-full flex-1 flex-col items-start justify-start gap-2 md:w-auto">
+      <div
+        className={cn(
+          "flex flex-col items-start justify-start",
+          compType === "other"
+            ? "w-full gap-3"
+            : "w-full flex-1 gap-2 md:w-auto",
+        )}
+      >
         <div className="flex items-center gap-4">
-          <Skeleton className="h-6 w-24 rounded-sm bg-gray-300" />
-          <Skeleton className="h-4 w-36 bg-gray-300" />
+          <Skeleton
+            className={cn(
+              "h-6 w-24 rounded-sm",
+              compType === "other" ? "bg-gray-400" : "bg-gray-300",
+            )}
+          />
+          <Skeleton
+            className={cn(
+              "h-4 w-36",
+              compType === "other" ? "bg-gray-400" : "bg-gray-300",
+            )}
+          />
         </div>
-        <Skeleton className="mt-1 h-6 w-4/5 bg-gray-300" />
+        <Skeleton
+          className={cn(
+            "mt-1 h-6 w-4/5",
+            compType === "other" ? "bg-gray-400" : "bg-gray-300",
+          )}
+        />
         <div className="w-full space-y-2">
-          <Skeleton className="h-4 w-full bg-gray-300" />
-          <Skeleton className="h-4 w-full bg-gray-300" />
-          <Skeleton className="h-4 w-3/4 bg-gray-300" />
+          <Skeleton
+            className={cn(
+              "h-4 w-full",
+              compType === "other" ? "bg-gray-400" : "bg-gray-300",
+            )}
+          />
+          <Skeleton
+            className={cn(
+              "h-4 w-full",
+              compType === "other" ? "bg-gray-400" : "bg-gray-300",
+            )}
+          />
+          <Skeleton
+            className={cn(
+              "h-4 w-3/4",
+              compType === "other" ? "bg-gray-400" : "bg-gray-300",
+            )}
+          />
         </div>
-        <Skeleton className="mt-1 h-10 w-28 rounded-none bg-gray-300" />
+        <Skeleton
+          className={cn(
+            "mt-1 h-10 w-28 rounded-none",
+            compType === "other" ? "bg-gray-400" : "bg-gray-300",
+          )}
+        />
       </div>
     </article>
   );

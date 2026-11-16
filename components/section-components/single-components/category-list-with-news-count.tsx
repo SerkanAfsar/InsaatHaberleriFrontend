@@ -1,5 +1,6 @@
 import { getAllCategories } from "@/actions/category.actions";
 import CustomElement from "@/components/utils/custom-element";
+import { categoryUrlConverter } from "@/lib";
 import Link from "next/link";
 
 export default async function CategoryListWithNewsCount() {
@@ -19,7 +20,10 @@ export default async function CategoryListWithNewsCount() {
         {lastResult?.map((item) => (
           <CustomElement as="li" className="block w-full" key={item.id}>
             <Link
-              href={"/"}
+              href={categoryUrlConverter({
+                id: item.id,
+                title: item.categoryName,
+              })}
               className="flex w-full items-center justify-between p-1 text-sm"
             >
               <CustomElement as="span" className="font-semibold">

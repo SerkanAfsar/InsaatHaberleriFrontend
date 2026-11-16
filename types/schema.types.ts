@@ -5,6 +5,7 @@ import {
   addMemberDetailSchema,
   addRoleSchema,
   changePasswordSchema,
+  contactSchema,
   forgotPasswordSchema,
   loginShema,
   registerSchema,
@@ -34,3 +35,5 @@ export type ResetPasswordType = z.infer<typeof resetPasswordSchema>;
 export type ForgotPasswordType = z.infer<typeof forgotPasswordSchema>;
 
 export type RegisterClientMemberType = z.infer<typeof registerSchema>;
+
+export type ContactFormType = z.infer<typeof contactSchema>;

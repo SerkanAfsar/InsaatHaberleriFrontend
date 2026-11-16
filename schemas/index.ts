@@ -159,11 +159,6 @@ export const forgotPasswordSchema = z.object({
   eMail: z.email({ error: "Geçerli bir e-posta adresi giriniz" }),
 });
 
-export enum Gender {
-  Bay = 1,
-  Bayan = 2,
-}
-
 export const registerSchema = z
   .object({
     email: z.email({ error: "Geçerli bir e-posta adresi giriniz" }),
@@ -176,3 +171,18 @@ export const registerSchema = z
     path: ["passwordConfirm"],
     message: "Şifreler eşleşmiyor",
   });
+
+export const contactSchema = z.object({
+  nameSurname: z
+    .string({ error: "İsim Soyisim Giriniz" })
+    .min(1, { error: "İsim Soyisim Giriniz" }),
+  email: z
+    .string({ error: "E-Posta Adresinizi Giriniz" })
+    .email({ error: "E-Posta Formatı Yanlış" }),
+  subject: z
+    .string({ error: "Konu Giriniz" })
+    .min(1, { error: "Konu Giriniz" }),
+  messageText: z
+    .string({ error: "Mesajınızı Giriniz" })
+    .min(1, { error: "Mesajınızı Giriniz" }),
+});

@@ -1,6 +1,6 @@
 "use client";
 import CustomElement from "@/components/utils/custom-element";
-import { cn } from "@/lib";
+import { categoryUrlConverter, cn } from "@/lib";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import logo from "@/public/images/logo.png";
@@ -22,7 +22,7 @@ export default function HeaderAside({
       <CustomElement
         as="aside"
         className={cn(
-          "fixed inset-0 z-20 h-full w-full",
+          "fixed inset-0 z-40 h-full w-full",
           "transition-all delay-500 duration-500 ease-in",
           opened ? "visible" : "invisible",
         )}
@@ -51,16 +51,38 @@ export default function HeaderAside({
             className="block w-full text-[14px] font-semibold text-black"
           >
             <CustomElement as="ul" className="flex flex-col">
+              <CustomElement as="li" className="block w-full">
+                <Link
+                  href={"/"}
+                  title="Anasayfa"
+                  className="hover:bg-clientprimary block w-full border-b border-gray-200 p-2 hover:text-white"
+                >
+                  Anasayfa
+                </Link>
+              </CustomElement>
               {categories.map((item) => (
                 <CustomElement as="li" key={item.id} className="block w-full">
                   <Link
-                    href={"/"}
+                    href={categoryUrlConverter({
+                      id: item.id,
+                      title: item.categoryName,
+                    })}
+                    title={item.categoryName}
                     className="hover:bg-clientprimary block w-full border-b border-gray-200 p-2 hover:text-white"
                   >
                     {item.categoryName}
                   </Link>
                 </CustomElement>
               ))}
+              <CustomElement as="li" className="block w-full">
+                <Link
+                  href={"/iletisim"}
+                  title="Anasayfa"
+                  className="hover:bg-clientprimary block w-full border-b border-gray-200 p-2 hover:text-white"
+                >
+                  İletişim
+                </Link>
+              </CustomElement>
             </CustomElement>
           </CustomElement>
         </CustomElement>

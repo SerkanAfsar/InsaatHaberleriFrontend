@@ -1,4 +1,4 @@
-import { CustomComboboxItemProps, EnvDataType } from "@/types";
+import { CustomComboboxItemProps, EnvDataType, NewsSites } from "@/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { CustomError } from "./errors";
@@ -7,6 +7,7 @@ import slug from "slug";
 import { decodeJwt } from "jose";
 
 import { AppJwtPayload } from "@/types/jwt.types";
+import { notFound } from "next/navigation";
 
 export const slugUrl = (value: string) => {
   if (value) {
@@ -125,3 +126,23 @@ export const formatLocaleDate = (date: Date): string => {
     year: "numeric",
   }).format(new Date(date));
 };
+
+export async function GetDetailParameters({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}) {
+  const { slug } = await params;
+  const id = Number(slug[slug.length - 1]);
+  if (isNaN(id)) return notFound();
+  return id;
+}
+
+export const newsSiteOptions: CustomComboboxItemProps[] = Object.entries(
+  NewsSites,
+)
+  .filter(([key]) => Number.isNaN(Number(key)))
+  .map(([label, value]) => ({
+    value: label,
+    id: Number(value),
+  }));

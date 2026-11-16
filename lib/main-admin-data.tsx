@@ -1,4 +1,5 @@
 import { AdminMenuDataType } from "@/types";
+import { CACHE_TAGS } from "./cache-tags";
 
 export const MainAdminMenuData = {
   Categories: {
@@ -8,6 +9,12 @@ export const MainAdminMenuData = {
     apiUrl: "/Categories",
     component: "Categories",
     icon: "LayoutGrid",
+    cacheKeys: [
+      CACHE_TAGS.CATEGORIES.MOST_READED,
+      CACHE_TAGS.CATEGORIES.ALL_CATEGORIES,
+      CACHE_TAGS.CATEGORIES.MAIN_PAGE_CATEGORIES,
+    ],
+    mainCacheKey: CACHE_TAGS.CATEGORIES.ALL_CATEGORIES,
   },
   CategorySources: {
     url: "/Admin/CategorySources",
@@ -25,6 +32,12 @@ export const MainAdminMenuData = {
     apiUrl: "/Articles",
     addUrl: "/Admin/Blogs/Add",
     icon: "Newspaper",
+    cacheKeys: [
+      CACHE_TAGS.CATEGORIES.MOST_READED,
+      CACHE_TAGS.ARTICLES.ARTICLE_LIST,
+      CACHE_TAGS.ARTICLES.POPULAR_LIST,
+    ],
+    mainCacheKey: CACHE_TAGS.ARTICLES.ARTICLE_LIST,
   },
   Users: {
     url: "/Admin/Users",
@@ -41,5 +54,13 @@ export const MainAdminMenuData = {
     apiUrl: "/Roles",
     addUrl: "/Admin/Roles/Add",
     icon: "ShieldCheck",
+  },
+  Messages: {
+    url: "/Admin/Messages",
+    validateKey: "Messages",
+    title: "Mesajlar",
+    apiUrl: "/Messages",
+    icon: "ShieldCheck",
+    component: "MessageDetail",
   },
 } as const satisfies AdminMenuDataType;

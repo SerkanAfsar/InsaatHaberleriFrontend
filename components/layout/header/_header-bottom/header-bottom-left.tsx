@@ -1,4 +1,5 @@
 import CustomElement from "@/components/utils/custom-element";
+import { categoryUrlConverter } from "@/lib";
 import { CategoryType } from "@/types/entity.types";
 import Link from "next/link";
 
@@ -16,21 +17,34 @@ export default function HeaderBottomLeft({
         <CustomElement as="li" className="block">
           <Link
             href={"/"}
-            className="hover:bg-clientprimary -ml-4 block p-4 transition-all"
+            className="hover:bg-clientprimary -ml-4 block px-3 py-4 transition-all"
           >
             Anasayfa
           </Link>
         </CustomElement>
-        {categories?.slice(0, 6).map((item) => (
+
+        {categories?.slice(0, 5).map((item) => (
           <CustomElement as="li" className="block" key={item.id}>
             <Link
-              href={"/"}
-              className="hover:bg-clientprimary block p-4 transition-all"
+              href={categoryUrlConverter({
+                id: item.id,
+                title: item.categoryName,
+              })}
+              className="hover:bg-clientprimary block px-3 py-4 text-nowrap transition-all"
             >
               {item.categoryName}
             </Link>
           </CustomElement>
         ))}
+        <CustomElement as="li" className="block">
+          <Link
+            title="İletişim"
+            href={"/iletisim"}
+            className="hover:bg-clientprimary block px-3 py-4 transition-all"
+          >
+            İletişim
+          </Link>
+        </CustomElement>
       </CustomElement>
     </CustomElement>
   );

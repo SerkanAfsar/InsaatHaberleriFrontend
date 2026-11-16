@@ -6,7 +6,6 @@ export default function DatatableRowActions<TData extends object>({
   row,
   table,
   dataItem,
-  deleteCacheKeys,
   ...rest
 }: DatatableRowActionProps<TData>) {
   const rowOriginal = row.original as any;
@@ -16,12 +15,7 @@ export default function DatatableRowActions<TData extends object>({
   return (
     <div className="flex items-center justify-start gap-4">
       <DatatableUpdateComponent id={newId} dataItem={dataItem} {...rest} />
-      <DataTableDeleteComponent
-        row={row}
-        table={table}
-        dataItem={dataItem}
-        deleteCacheKeys={deleteCacheKeys}
-      />
+      <DataTableDeleteComponent row={row} table={table} dataItem={dataItem} />
     </div>
   );
 }

@@ -27,4 +27,13 @@ export type BlogType = BaseEntityType & {
   imageId: string | null;
   readedCount: number;
   category: CategoryType | null;
+  sourceUrl: string | null;
+};
+
+export type MessageType = BaseEntityType & {
+  nameSurname: string;
+  eMail: string;
+  subject: string;
+  messageText: string;
+  isReaded: boolean;
 };

@@ -4,19 +4,21 @@ import CustomElement from "@/components/utils/custom-element";
 
 export default async function PopularPosts({
   categoryId,
+  categoryName,
 }: {
   categoryId: number | null;
+  categoryName?: string;
 }) {
   const result = await getMainPagePopularPosts({ categoryId });
   return (
     <>
       <CustomElement
         as="h3"
-        className="mb-6 border-b border-gray-300 pb-6 text-xl font-semibold text-black"
+        className="mb-4 border-b border-gray-300 pb-4 text-lg font-semibold text-black"
       >
-        Popüler Haberler
+        {categoryName} Popüler Haberler
       </CustomElement>
-      <CustomElement className="flex flex-col gap-4">
+      <CustomElement className="grid gap-4 md:grid-cols-2 lg:grid-cols-1">
         {result?.map((item) => {
           return <XSmallNewsItem item={item} key={item.id} />;
         })}

@@ -8,12 +8,9 @@ import { ColumnDef } from "@tanstack/react-table";
 import { useMemo } from "react";
 
 import { CustomDataTable } from "@/components/datatables";
+import { MainAdminMenuData } from "@/lib";
 
-export default function CategoryListContainer({
-  dataItem,
-}: {
-  dataItem: AdminMenuPageType;
-}) {
+export default function CategoryListContainer() {
   const columns = useMemo<ColumnDef<AddCategoryType & { id: number }>[]>(
     () => [
       {
@@ -94,7 +91,11 @@ export default function CategoryListContainer({
         },
         cell: ({ row, table }) => {
           return (
-            <DatatableRowActions row={row} table={table} dataItem={dataItem} />
+            <DatatableRowActions
+              row={row}
+              table={table}
+              dataItem={MainAdminMenuData.Categories}
+            />
           );
         },
         enableSorting: false,
@@ -106,7 +107,12 @@ export default function CategoryListContainer({
         },
       },
     ],
-    [dataItem],
+    [],
   );
-  return <CustomDataTable columns={columns} dataItem={dataItem} />;
+  return (
+    <CustomDataTable
+      columns={columns}
+      dataItem={MainAdminMenuData.Categories}
+    />
+  );
 }

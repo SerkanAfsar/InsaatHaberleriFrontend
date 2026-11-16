@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useCrudData, useGetAllData } from "@/hooks/use-queries";
-import { getArrayData, MainAdminMenuData } from "@/lib";
+import { getArrayData, MainAdminMenuData, newsSiteOptions } from "@/lib";
 import { setErrors } from "@/lib/utils";
 import { addCategorySourceSchema } from "@/schemas";
 import {
@@ -59,13 +59,6 @@ const AddUpdateCategorySourceDetail = React.forwardRef<
     "categoryName",
   );
 
-  const newsSiteOptions: CustomComboboxItemProps[] = Object.entries(NewsSites)
-    .filter(([key]) => Number.isNaN(Number(key)))
-    .map(([label, value]) => ({
-      value: label,
-      id: Number(value),
-    }));
-
   useEffect(() => {
     if (isSuccess) {
       form.reset();
@@ -74,7 +67,8 @@ const AddUpdateCategorySourceDetail = React.forwardRef<
   }, [isSuccess, form, type, setOpened]);
 
   async function onSubmit(values: AddCategorySourceType) {
-    await mutateAsync(values);
+    const lastData = idNumber ? { ...values, id: idNumber } : values;
+    await mutateAsync(lastData);
   }
 
   useImperativeHandle(ref, () => ({

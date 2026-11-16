@@ -8,5 +8,6 @@ export const CACHE_TAGS = {
   ARTICLES: {
     ARTICLE_LIST: "ARTICLE",
     POPULAR_LIST: "POPULAR_LIST",
+    ARTICLE_DETAIL: ({ id }: { id: number }) => `ARTICLE:${id}`,
   },
 };

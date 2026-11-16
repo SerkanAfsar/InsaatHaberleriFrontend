@@ -16,7 +16,7 @@ export type AdminMenuPageType = {
   deleteUrl?: `/${string}`;
   cacheKeys?: string[];
   addUrl?: string;
-  cacheActions?: () => Promise<void>;
+  mainCacheKey?: string;
 };
 
 export type EnvDataType = {

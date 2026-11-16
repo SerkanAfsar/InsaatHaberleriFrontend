@@ -18,6 +18,9 @@ export const API_URL = {
     GetLast: "/Articles/LastNews",
     Popular: "/Articles/Popular",
     MostPopular: "/Articles/MostPopular",
+    Detail: ({ id }: { id: number }) => `/Articles/${id}`,
+    IncreaseReadCount: ({ id }: { id: number }) =>
+      `/Articles/${id}/IncreaseReadCount`,
   },
 
   CATEGORIES: {
@@ -38,5 +41,9 @@ export const API_URL = {
   CATEGORY_NEWS_URL: {
     AllData: "/CategoryNewsUrls",
     Detail: (id: number) => `/CategoryNewsUrls/${id}`,
+  },
+  MESSAGES: {
+    AllData: "/Messages",
+    Detail: (id: number) => `/Messages/${id}`,
   },
 };

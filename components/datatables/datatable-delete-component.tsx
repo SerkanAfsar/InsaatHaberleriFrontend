@@ -22,7 +22,6 @@ export default function DataTableDeleteComponent<TData extends object>({
   row,
   table,
   dataItem,
-  deleteCacheKeys,
 }: DeleteComponentProps<TData>) {
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const { id, userId, roleId } = row.original as any;
@@ -31,13 +30,19 @@ export default function DataTableDeleteComponent<TData extends object>({
 
   const apiUrl = `${dataItem.deleteUrl ?? dataItem.apiUrl}/${id ?? userId ?? roleId}`;
 
+  const revalidateFunc = async () => {
+    if (dataItem.mainCacheKey) {
+      await revalidateKeys([`${dataItem.mainCacheKey}:${id}`]);
+    }
+  };
+
   const { mutateAsync, isPending } = useCrudData<TData, object>(
     apiUrl,
     "DELETE",
     customValidateKey ?? dataItem.validateKey,
     dataItem.cacheKeys,
     "json",
-    dataItem.cacheActions,
+    revalidateFunc,
   );
 
   return (
@@ -71,9 +76,6 @@ export default function DataTableDeleteComponent<TData extends object>({
           <AlertDialogAction
             onClick={async () => {
               await mutateAsync();
-              if (deleteCacheKeys?.length) {
-                await revalidateKeys(deleteCacheKeys);
-              }
               setIsOpened(false);
             }}
             disabled={isPending}

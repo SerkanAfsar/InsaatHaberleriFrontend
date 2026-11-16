@@ -44,7 +44,7 @@ export default function CategorySlideList({
           <CustomElement
             key={elem.id}
             className={cn(
-              "mt-4 hidden w-full gap-6 md:grid-cols-2 lg:grid-cols-3",
+              "mt-4 hidden w-full gap-6 md:grid-cols-2 xl:grid-cols-3",
               elem.id === activeCategory.id && "animate-scroll-fade-in grid",
             )}
           >

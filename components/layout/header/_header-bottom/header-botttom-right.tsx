@@ -1,6 +1,6 @@
 "use client";
 import CustomElement from "@/components/utils/custom-element";
-import { cn } from "@/lib";
+import { categoryUrlConverter, cn } from "@/lib";
 import { CategoryType } from "@/types/entity.types";
 import { Menu, SearchIcon, X } from "lucide-react";
 import Link from "next/link";
@@ -64,7 +64,14 @@ function HeaderBottomCategoryList({
         >
           {item.map((elem) => (
             <CustomElement as="li" key={elem.id}>
-              <Link href={"/"}>{elem.categoryName}</Link>
+              <Link
+                href={categoryUrlConverter({
+                  id: elem.id,
+                  title: elem.categoryName,
+                })}
+              >
+                {elem.categoryName}
+              </Link>
             </CustomElement>
           ))}
         </CustomElement>

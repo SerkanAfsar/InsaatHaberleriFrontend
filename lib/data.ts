@@ -47,6 +47,15 @@ export const ROLE_CLAIM_LIST = {
       delete: "permission.newses.delete",
     },
   },
+  message: {
+    title: "Mesajlar",
+    permissions: {
+      read: "permission.message.read",
+      create: "permission.message.create",
+      update: "permission.message.update",
+      delete: "permission.message.delete",
+    },
+  },
   setttings: {
     title: "Ayarlar",
     permissions: {

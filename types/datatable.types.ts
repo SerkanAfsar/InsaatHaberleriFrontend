@@ -57,5 +57,4 @@ export type DeleteComponentProps<TData extends object> = {
   table?: Table<TData>;
   row: Row<TData>;
   dataItem: AdminMenuPageType;
-  deleteCacheKeys?: string[];
 };

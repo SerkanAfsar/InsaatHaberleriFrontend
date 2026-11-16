@@ -2,11 +2,13 @@ import { slugUrl } from "./utils";
 
 export const newsUrlConverter = ({
   id,
+  categoryName,
   title,
 }: {
   id: number;
+  categoryName: string;
   title: string;
-}) => `/haber/${slugUrl(title)}/${id}`;
+}) => `/haber/${slugUrl(categoryName)}/${slugUrl(title)}/${id}`;
 
 export const categoryUrlConverter = ({
   id,
@@ -14,4 +16,4 @@ export const categoryUrlConverter = ({
 }: {
   id: number;
   title: string;
-}) => `/kategoriler/${slugUrl(`${title} firmaları`)}/${id}`;
+}) => `/kategori/${slugUrl(`${title}`)}/${id}`;

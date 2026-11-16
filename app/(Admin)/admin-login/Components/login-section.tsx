@@ -141,6 +141,7 @@ function LoginSection() {
           <CloudflareCaptcha
             onVerify={setToken}
             onExpire={() => setToken("")}
+            optionsRest={{ size: "flexible" }}
           />
           {form.formState.errors.root && (
             <b className="block text-center text-red-500">

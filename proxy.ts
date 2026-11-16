@@ -12,10 +12,6 @@ const redirectTo = (request: NextRequest) => {
     return NextResponse.redirect(
       new URL(`${URL_LIST.Admin.LOGIN}?auth=UnAuth`, request.url),
     );
-  else if (pathName.includes("/client-admin"))
-    return NextResponse.redirect(new URL(URL_LIST.Client.LOGIN, request.url));
-  else
-    return NextResponse.redirect(new URL(URL_LIST.Client.LOGIN, request.url));
 };
 
 const roleResult = (req: NextRequest, token: string) => {

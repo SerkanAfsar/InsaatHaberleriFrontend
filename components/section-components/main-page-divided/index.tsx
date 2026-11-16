@@ -64,13 +64,6 @@ export default function MainPageDivided() {
           <CategoryListWithNewsCount />
         </AsyncSection>
         <RegisterNewsLetter />
-        {/* <AsyncSection
-          title="MostPopularArticle"
-          className="categoryWithNews"
-          fallback={<CategoryListWithNewsCountLoader />}
-        >
-          <MostPopularArticle />
-        </AsyncSection> */}
       </CustomElement>
     </CustomElement>
   );

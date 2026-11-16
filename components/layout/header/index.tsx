@@ -10,7 +10,10 @@ export default function Header() {
     <CustomElement as="header" className="block w-full">
       <HeaderTop />
       <HeaderMiddle />
-      <AsyncSection fallback={<div>Loading...</div>} title="Categories">
+      <AsyncSection
+        fallback={<CustomElement className="bg-clientdark block w-full p-7" />}
+        title="Categories"
+      >
         <HeaderBottom />
       </AsyncSection>
     </CustomElement>
