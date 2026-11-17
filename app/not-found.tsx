@@ -1,13 +1,10 @@
-import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
 import { ArrowLeft, SearchX } from "lucide-react";
 import Link from "next/link";
 
 export default function NotFound() {
   return (
     <div className="public-site flex min-h-svh w-full flex-col">
-      <Header />
-      <main className="bg-main-bg grid flex-1 place-items-center px-4 py-12 sm:py-24">
+      <div className="bg-main-bg grid flex-1 place-items-center px-4 py-12 sm:py-24">
         <div className="flex w-full max-w-xl flex-col items-center text-center">
           <div
             role="img"
@@ -38,8 +35,7 @@ export default function NotFound() {
             Anasayfaya dön
           </Link>
         </div>
-      </main>
-      <Footer />
+      </div>
     </div>
   );
 }
