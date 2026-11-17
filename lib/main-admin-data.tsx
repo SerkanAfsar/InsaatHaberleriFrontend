@@ -2,6 +2,11 @@ import { AdminMenuDataType } from "@/types";
 import { CACHE_TAGS } from "./cache-tags";
 
 export const MainAdminMenuData = {
+  Dashboard: {
+    url: "/Admin/Dashboard",
+    title: "Dashboard",
+    icon: "ShieldCheck",
+  },
   Categories: {
     url: "/Admin/Categories",
     validateKey: "Categories",
