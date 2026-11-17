@@ -6,6 +6,8 @@ export const MainAdminMenuData = {
     url: "/Admin/Dashboard",
     title: "Dashboard",
     icon: "ShieldCheck",
+    validateKey: "",
+    apiUrl: "/test",
   },
   Categories: {
     url: "/Admin/Categories",

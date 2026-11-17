@@ -145,26 +145,20 @@ export async function getArticleDetail({ id }: { id: number }) {
   return entity;
 }
 
-// export async function increaseArticleReadCount({ id }: { id: number }) {
-//   const { entity, errors, statusCode, success } = await BaseFetch<
-//     BlogType,
-//     any
-//   >({
-//     method: "POST",
-//     requireToken: false,
-//     url: API_URL.ARTICLES.IncreaseReadCount({ id }),
-//   });
-//   if (!success && statusCode == 404) {
-//     throw new Error("Article Not Found");
-//   }
-//   if (!success && errors) {
-//     const errResult = getErrResult(errors);
-//     throw new Error(errResult);
-//   }
-//   revalidateKeys([
-//     `${CACHE_TAGS.ARTICLES.ARTICLE_DETAIL({ id })}`,
-//     CACHE_TAGS.ARTICLES.POPULAR_LIST,
-//     CACHE_TAGS.CATEGORIES.MOST_READED,
-//   ]);
-//   return entity;
-// }
+export async function getAllArticles() {
+  "use cache";
+  cacheTag(CACHE_TAGS.ARTICLES.ARTICLE_LIST);
+  cacheLife("days");
+
+  const { entities, errors, success } = await BaseFetch<BlogType, any>({
+    method: "GET",
+    requireToken: false,
+    url: API_URL.ARTICLES.All,
+  });
+
+  if (!success && errors) {
+    const errResult = getErrResult(errors);
+    throw new Error(errResult);
+  }
+  return entities;
+}
