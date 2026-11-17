@@ -48,68 +48,6 @@ async function isValidToken(token: string): Promise<boolean> {
   }
 }
 
-// export async function proxy(request: NextRequest) {
-//   const token = request.cookies.get("accessToken")?.value;
-//   const refreshToken = request.cookies.get("refreshToken")?.value;
-//   const res = NextResponse.next();
-
-//   if (!token && !refreshToken && request.method == "GET") {
-//     return redirectTo(request);
-//   }
-
-//   if (token && (await isValidToken(token))) {
-//     const roleResponse = roleResult(request, token);
-
-//     if (roleResponse) {
-//       return roleResponse;
-//     }
-
-//     return res;
-//   }
-
-//   if (!refreshToken && request.method === "GET") {
-//     return redirectTo(request);
-//   }
-
-//   const response = await fetch(`${EnvValues.BaseApiUrl}/Auth/refreshToken`, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json; charset=utf-8",
-//     },
-//     body: JSON.stringify(refreshToken),
-//   });
-
-//   if (response.ok) {
-//     const result = (await response.json()) as ResponseResult<AccessTokenType>;
-
-//     if (!result.success && request.method == "GET") {
-//       return redirectTo(request);
-//     }
-//     const data = result.entity as AccessTokenType;
-//     res.cookies.set("accessToken", data.accessToken, {
-//       httpOnly: true,
-//       secure: process.env.NODE_ENV == "production",
-//       expires: new Date(data.accessTokenExpiration),
-//       sameSite: "strict",
-//       path: "/",
-//     });
-
-//     res.cookies.set("refreshToken", data.refreshToken, {
-//       httpOnly: true,
-//       secure: process.env.NODE_ENV == "production",
-//       expires: new Date(data.refreshTokenExpiration),
-//       sameSite: "strict",
-//       path: "/",
-//     });
-//     return res;
-//   }
-//   if (request.method == "GET") {
-//     return redirectTo(request);
-//   }
-
-//   return res;
-// }
-
 export async function proxy(request: NextRequest) {
   const token = request.cookies.get("accessToken")?.value;
   const refreshToken = request.cookies.get("refreshToken")?.value;
@@ -193,5 +131,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/Admin/((?!Login$).*)", "/client-admin/((?!login$).*)"],
+  matcher: ["/Admin/:path*"],
 };

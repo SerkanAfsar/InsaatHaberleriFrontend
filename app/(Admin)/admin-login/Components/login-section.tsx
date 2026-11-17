@@ -25,6 +25,7 @@ import { Controller, useForm } from "react-hook-form";
 
 function LoginSection() {
   const [token, setToken] = useState<string>("");
+  const [count, setCount] = useState<number>(0);
   const router = useRouter();
   const form = useForm<LoginType>({
     resolver: zodResolver(loginShema),
@@ -38,8 +39,10 @@ function LoginSection() {
   async function onSubmit(values: LoginType) {
     const result = await loginAction({ ...values, token });
     if (!result.success && result.errors) {
+      setCount((prev) => prev + 1);
       return setErrors({ error: result.errors, form });
     }
+    setCount((prev) => prev + 1);
     return router.push("/Admin/Dashboard");
   }
 
@@ -50,22 +53,7 @@ function LoginSection() {
         <h2 className="text-sm text-gray-400">
           Portala Giriş Yapmak İçin E-Posta Adresinizi ve Şifrenizi Giriniz
         </h2>
-        {/* <div className="flex w-full items-center justify-between">
-          <Button
-            variant={"ghost"}
-            className="flex w-50 cursor-pointer items-center justify-center bg-gray-100 p-3"
-          >
-            <GoogleIcon />
-            Google İle Giriş
-          </Button>
-          <Button
-            variant={"ghost"}
-            className="flex w-50 cursor-pointer items-center justify-center bg-gray-100 p-3"
-          >
-            <TwitterIcon />
-            Twitter İle Giriş
-          </Button>
-        </div> */}
+
         <div className="relative block h-px w-full bg-gray-200 text-gray-400">
           <span className="absolute top-[50½] left-[50%] z-10 -translate-x-1/2 -translate-y-1/2 bg-white px-3">
             Veya
@@ -139,6 +127,7 @@ function LoginSection() {
             Giriş
           </Button>
           <CloudflareCaptcha
+            key={count}
             onVerify={setToken}
             onExpire={() => setToken("")}
             optionsRest={{ size: "flexible" }}
