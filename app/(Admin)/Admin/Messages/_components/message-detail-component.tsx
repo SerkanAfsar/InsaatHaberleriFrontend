@@ -14,7 +14,7 @@ import SetReadedComponent from "./set-readed-component";
 const MessageDetail = React.forwardRef<
   AddFormRef,
   AddUpdateContainerProps<AddAppUserType>
->(({ idNumber, setOpened }, ref) => {
+>(({ idNumber, setOpened }) => {
   const { data } = useSingleItemById<MessageType>(
     idNumber!,
     MainAdminMenuData.Messages.apiUrl,

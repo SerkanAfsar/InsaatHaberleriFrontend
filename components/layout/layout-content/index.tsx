@@ -50,7 +50,7 @@ export default function LayoutContent({
       >
         {Component}
       </AsyncSection>
-      <CustomElement className="mt-4 flex w-full flex-col gap-4 lg:flex-row">
+      <CustomElement className="mt-5 flex w-full flex-col gap-4 lg:flex-row">
         <CustomElement className="flex-2">{children}</CustomElement>
         <CustomElement as="aside" className="flex-1">
           <MainPageAdvertisement />

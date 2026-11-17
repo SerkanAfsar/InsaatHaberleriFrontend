@@ -3,7 +3,7 @@ import BigNewsItem from "@/components/news-item/big-new-item";
 import CustomElement from "@/components/utils/custom-element";
 import CategoryDetailWrapper from "./_components/category-detail-wrapper";
 import CategoryPaginate from "./_components/category-paginate";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { getCategoryDetail } from "@/actions/category.actions";
 import { notFound } from "next/navigation";
 import { categoryUrlConverter } from "@/lib";

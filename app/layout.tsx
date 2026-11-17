@@ -4,6 +4,7 @@ import CustomQueryClientProvider from "@/providers/CustomQueryClientProvider";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import { Analytics } from "@vercel/analytics/next";
 
 const fontPoppins = Poppins({
   variable: "--font-Poppins",
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           showSpinner={true}
           zIndex={1600}
         />
+        <Analytics />
       </body>
     </html>
   );
