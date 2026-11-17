@@ -24,6 +24,7 @@ export default async function CategoryListWithNewsCount() {
                 id: item.id,
                 title: item.categoryName,
               })}
+              title={item.categoryName}
               className="flex w-full items-center justify-between p-1 text-sm"
             >
               <CustomElement as="span" className="font-semibold">

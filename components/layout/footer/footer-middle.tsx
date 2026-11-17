@@ -1,5 +1,6 @@
 import { getAllCategories } from "@/actions/category.actions";
 import CustomElement from "@/components/utils/custom-element";
+import { categoryUrlConverter } from "@/lib";
 import Link from "next/link";
 
 export default async function FooterMiddle() {
@@ -24,28 +25,60 @@ export default async function FooterMiddle() {
               <CustomElement as="ul" className="flex flex-col gap-3">
                 {arr1?.map((item) => (
                   <CustomElement as="li" key={item.id}>
-                    <Link href={"/"}>{item.categoryName}</Link>
+                    <Link
+                      href={categoryUrlConverter({
+                        id: item.id,
+                        title: item.categoryName,
+                      })}
+                      title={item.categoryName}
+                    >
+                      {item.categoryName}
+                    </Link>
                   </CustomElement>
                 ))}
               </CustomElement>
               <CustomElement as="ul" className="flex flex-col gap-3">
                 {arr2?.map((item) => (
                   <CustomElement as="li" key={item.id}>
-                    <Link href={"/"}>{item.categoryName}</Link>
+                    <Link
+                      href={categoryUrlConverter({
+                        id: item.id,
+                        title: item.categoryName,
+                      })}
+                      title={item.categoryName}
+                    >
+                      {item.categoryName}
+                    </Link>
                   </CustomElement>
                 ))}
               </CustomElement>
               <CustomElement as="ul" className="flex flex-col gap-3">
                 {arr3?.map((item) => (
                   <CustomElement as="li" key={item.id}>
-                    <Link href={"/"}>{item.categoryName}</Link>
+                    <Link
+                      href={categoryUrlConverter({
+                        id: item.id,
+                        title: item.categoryName,
+                      })}
+                      title={item.categoryName}
+                    >
+                      {item.categoryName}
+                    </Link>
                   </CustomElement>
                 ))}
               </CustomElement>
               <CustomElement as="ul" className="flex flex-col gap-3">
                 {arr4?.map((item) => (
                   <CustomElement as="li" key={item.id}>
-                    <Link href={"/"}>{item.categoryName}</Link>
+                    <Link
+                      href={categoryUrlConverter({
+                        id: item.id,
+                        title: item.categoryName,
+                      })}
+                      title={item.categoryName}
+                    >
+                      {item.categoryName}
+                    </Link>
                   </CustomElement>
                 ))}
               </CustomElement>
@@ -67,10 +100,10 @@ function AboutItem() {
         as="p"
         className="font-opensans col-span-1 text-left text-[14px] leading-7"
       >
-        But I must explain to you how all this mistaken idea of denouncing
-        pleasure and praising pain was born and I will give you a complete
-        account of the system, and expound the actual teachings of the great
-        explorer of the truth, the master-builder of human happiness.
+        İnşaat Haberleri, inşaat ve yapı sektöründeki güncel gelişmeleri,
+        sektörel yenilikleri ve önemli haberleri okuyucularıyla buluşturan
+        bağımsız bir haber platformudur. Sektörün nabzını tutarak doğru, güncel
+        ve güvenilir bilgi sunmayı amaçlıyoruz.
       </CustomElement>
     </CustomElement>
   );

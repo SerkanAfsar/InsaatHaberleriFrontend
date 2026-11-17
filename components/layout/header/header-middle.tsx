@@ -6,7 +6,7 @@ export default function HeaderMiddle() {
   return (
     <CustomElement as="section" className="w-full bg-white">
       <CustomElement className="container flex flex-col items-center justify-between md:flex-row">
-        <Link href={"/"} className="md:-ml-8">
+        <Link href={"/"} title="İnşaat Haberleri" className="md:-ml-8">
           <Image src={logo} width={300} height={200} alt="Logo" priority />
         </Link>
       </CustomElement>

@@ -29,6 +29,7 @@ export default function MainNewsItem({ item }: { item: BlogType }) {
         height={400}
         className="h-full w-full object-cover object-center"
         alt={item.title}
+        priority
       />
       <Link
         href={categoryUrl}

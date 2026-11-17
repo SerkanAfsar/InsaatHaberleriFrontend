@@ -73,6 +73,7 @@ export default function BigNewsItem({
         ></CustomElement>
         <Link
           href={newsUrl}
+          title={item.title}
           className="mt-auto min-w-28 border border-black p-2 text-center text-black transition-all duration-300 hover:bg-black hover:text-white"
         >
           DETAY

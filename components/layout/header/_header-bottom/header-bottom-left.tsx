@@ -17,6 +17,7 @@ export default function HeaderBottomLeft({
         <CustomElement as="li" className="block">
           <Link
             href={"/"}
+            title="Anasayfa"
             className="hover:bg-clientprimary -ml-4 block px-3 py-4 transition-all"
           >
             Anasayfa
@@ -30,6 +31,7 @@ export default function HeaderBottomLeft({
                 id: item.id,
                 title: item.categoryName,
               })}
+              title={item.categoryName}
               className="hover:bg-clientprimary block px-3 py-4 text-nowrap transition-all"
             >
               {item.categoryName}

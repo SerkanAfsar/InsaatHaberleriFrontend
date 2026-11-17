@@ -69,6 +69,7 @@ function HeaderBottomCategoryList({
                   id: elem.id,
                   title: elem.categoryName,
                 })}
+                title={elem.categoryName}
               >
                 {elem.categoryName}
               </Link>

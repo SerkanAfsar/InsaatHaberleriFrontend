@@ -14,16 +14,16 @@ export default function HeaderTop() {
           className="flex items-center justify-center gap-4"
         >
           <CustomElement as="li">
-            <Link href={"/"}>About </Link>
+            <Link href={"/"} title="About">About </Link>
           </CustomElement>
           <CustomElement as="li">
-            <Link href={"/"}>Advertise </Link>
+            <Link href={"/"} title="Advertise">Advertise </Link>
           </CustomElement>
           <CustomElement as="li">
-            <Link href={"/"}>Privacy & Policy </Link>
+            <Link href={"/"} title="Privacy & Policy">Privacy & Policy </Link>
           </CustomElement>
           <CustomElement as="li">
-            <Link href={"/"}>Contact Us </Link>
+            <Link href={"/"} title="Contact Us">Contact Us </Link>
           </CustomElement>
         </CustomElement>
         <CustomElement
@@ -31,23 +31,23 @@ export default function HeaderTop() {
           className="flex items-center justify-center gap-4 text-[16px]"
         >
           <CustomElement as="li">
-            <Link href={"/"}>
-              <FaFacebook />
+            <Link href={"/"} title="facebook" aria-label="Facebook">
+              <FaFacebook aria-hidden="true" />
             </Link>
           </CustomElement>
           <CustomElement as="li">
-            <Link href={"/"}>
-              <FaInstagram />
+            <Link href={"/"} title="instagram" aria-label="Instagram">
+              <FaInstagram aria-hidden="true" />
             </Link>
           </CustomElement>
           <CustomElement as="li">
-            <Link href={"/"}>
-              <FaTwitch />
+            <Link href={"/"} title="twitch" aria-label="Twitch">
+              <FaTwitch aria-hidden="true" />
             </Link>
           </CustomElement>
           <CustomElement as="li">
-            <Link href={"/"}>
-              <FaLinkedin />
+            <Link href={"/"} title="linkedin" aria-label="LinkedIn">
+              <FaLinkedin aria-hidden="true" />
             </Link>
           </CustomElement>
         </CustomElement>
