@@ -1,11 +1,7 @@
 import { getCategoryDetail } from "@/actions/category.actions";
-import { AsyncSection } from "@/components/feedback";
+
 import LayoutContent from "@/components/layout/layout-content";
-import { DetailTopSectionLoader } from "@/components/loaders";
 
-import DetailTopSection from "@/components/section-components/single-components/detail-top-section";
-
-import CustomElement from "@/components/utils/custom-element";
 import {
   API_URL,
   BaseFetch,

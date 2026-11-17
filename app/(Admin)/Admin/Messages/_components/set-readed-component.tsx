@@ -11,7 +11,7 @@ export default function SetReadedComponent({
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const apiUrl = `${MainAdminMenuData.Messages.apiUrl}/${id}`;
-  const { mutateAsync, isSuccess, error, isPending } = useCrudData(
+  const { mutateAsync } = useCrudData(
     apiUrl,
     "PUT",
     MainAdminMenuData.Messages.validateKey,

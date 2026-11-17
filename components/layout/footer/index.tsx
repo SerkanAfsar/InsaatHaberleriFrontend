@@ -6,7 +6,7 @@ import FooterMiddle from "./footer-middle";
 
 export default function Footer() {
   return (
-    <CustomElement as="footer" className="bg-client-footer-bg mt-10 w-full">
+    <CustomElement as="footer" className="bg-client-footer-bg w-full">
       <FooterTop />
       <FooterMiddle />
       <Suspense>

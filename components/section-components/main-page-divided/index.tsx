@@ -6,7 +6,7 @@ import {
 } from "../../loaders";
 import CustomElement from "../../utils/custom-element";
 import CategoryListWithNewsCount from "../single-components/category-list-with-news-count";
-import MostPopularArticle from "../single-components/most-popular-article";
+
 import PopularPosts from "../single-components/popular-posts";
 import RandomCategoriesWithNews from "../single-components/random-categories-with-news";
 import RegisterNewsLetter from "../single-components/register-newsletter";

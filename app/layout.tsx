@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Open_Sans, Poppins } from "next/font/google";
+import { Open_Sans, Poppins } from "next/font/google";
 import CustomQueryClientProvider from "@/providers/CustomQueryClientProvider";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import NextTopLoader from "nextjs-toploader";
 
 const fontPoppins = Poppins({
   variable: "--font-Poppins",
@@ -39,6 +30,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <CustomQueryClientProvider>{children}</CustomQueryClientProvider>
         <ToastContainer />
+        <NextTopLoader
+          color="#f70d28"
+          height={4}
+          showSpinner={true}
+          zIndex={1600}
+        />
       </body>
     </html>
   );

@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 export default async function Page({
   params,
 }: PageProps<"/Admin/Roles/[id]/edit">) {

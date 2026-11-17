@@ -23,8 +23,11 @@ export function NavProjects({ menuitems }: { menuitems: AdminMenuDataType }) {
       </SidebarGroupLabel>
       <SidebarMenu className="gap-1">
         {Object.entries(menuitems).map(([key, value]) => {
-          const Icon = value.icon ? (Lucide[value.icon] as Lucide.LucideIcon) : null;
-          const condition = pathName === value.url || pathName.startsWith(`${value.url}/`);
+          const Icon = value.icon
+            ? (Lucide[value.icon] as Lucide.LucideIcon)
+            : null;
+          const condition =
+            pathName === value.url || pathName.startsWith(`${value.url}/`);
           return (
             <SidebarMenuItem key={key}>
               <SidebarMenuButton

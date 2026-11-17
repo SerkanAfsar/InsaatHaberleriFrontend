@@ -3,7 +3,7 @@
 import DataTableColumnHeader from "@/components/datatables/datatable-column-header";
 import DatatableRowActions from "@/components/datatables/datatable-row-actions";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AddCategoryType, AdminMenuPageType } from "@/types";
+import { AddCategoryType } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { useMemo } from "react";
 

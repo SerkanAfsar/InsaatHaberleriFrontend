@@ -91,7 +91,7 @@ function AdminDataTable<TData, TValue>({
         {addAction}
       </div>
       {error && (
-        <p role="alert" className="text-sm text-destructive">
+        <p role="alert" className="text-destructive text-sm">
           {error}
         </p>
       )}
@@ -155,7 +155,7 @@ function AdminDataTable<TData, TValue>({
           <label htmlFor="admin-table-page-size">Sayfa başına</label>
           <select
             id="admin-table-page-size"
-            className="h-9 rounded-md border bg-background px-2"
+            className="bg-background h-9 rounded-md border px-2"
             value={query.pageSize}
             onChange={(event) =>
               onQueryChange({
@@ -211,8 +211,8 @@ export function CustomDataTable<TData, TValue>(
           aria-busy="true"
           aria-label="Tablo yükleniyor"
         >
-          <div className="h-10 max-w-sm animate-pulse rounded-md bg-muted" />
-          <div className="h-48 w-full animate-pulse rounded-md bg-muted" />
+          <div className="bg-muted h-10 max-w-sm animate-pulse rounded-md" />
+          <div className="bg-muted h-48 w-full animate-pulse rounded-md" />
         </section>
       }
     >

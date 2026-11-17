@@ -72,11 +72,7 @@ export default function BigNewsItem({
           className="line-clamp-3 text-gray-600"
         ></CustomElement>
         <Link
-          href={newsUrlConverter({
-            categoryName: item.category?.categoryName ?? "deneme",
-            id: item.id,
-            title: item.title,
-          })}
+          href={newsUrl}
           className="mt-auto min-w-28 border border-black p-2 text-center text-black transition-all duration-300 hover:bg-black hover:text-white"
         >
           DETAY

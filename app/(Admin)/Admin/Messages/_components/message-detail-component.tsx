@@ -1,27 +1,12 @@
 "use client";
-import AdminModalSubmit from "@/components/datatables/datatable-modal-submit";
-import CustomSelect from "@/components/custom-ui/custom-select";
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
 
-import { Input } from "@/components/ui/input";
-import { useCrudData, useSingleItemById } from "@/hooks/use-queries";
+import { useSingleItemById } from "@/hooks/use-queries";
 import { MainAdminMenuData } from "@/lib";
-import { setErrors } from "@/lib/utils";
 
-import {
-  AddAppUserType,
-  AddFormRef,
-  AddUpdateContainerProps,
-  CustomOptionItemProps,
-} from "@/types";
+import { AddAppUserType, AddFormRef, AddUpdateContainerProps } from "@/types";
 
-import React, { useEffect, useImperativeHandle, useRef } from "react";
-import { Controller } from "react-hook-form";
+import React from "react";
+
 import CustomElement from "@/components/utils/custom-element";
 import { MessageType } from "@/types/entity.types";
 import SetReadedComponent from "./set-readed-component";
