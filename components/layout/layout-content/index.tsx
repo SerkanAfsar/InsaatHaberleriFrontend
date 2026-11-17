@@ -42,7 +42,7 @@ export default function LayoutContent({
     );
 
   return (
-    <CustomElement className="container mt-5">
+    <CustomElement className="container mt-5 mb-10">
       <AsyncSection
         title="Title"
         fallback={<DetailTopSectionLoader />}

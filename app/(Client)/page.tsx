@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <CustomElement className="container">
+    <CustomElement className="container mb-10">
       <AsyncSection
         title="Main Page Top"
         as="section"

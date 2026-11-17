@@ -5,7 +5,7 @@ import ContactLeft from "./_components/contact-left";
 
 export default function Page() {
   return (
-    <CustomElement className="container mt-5">
+    <CustomElement className="container mt-5 mb-10">
       <ContactDetailTop />
       <CustomElement className="mt-10 flex flex-col gap-6 lg:flex-row">
         <ContactLeft />
